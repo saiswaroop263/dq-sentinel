@@ -1,0 +1,135 @@
+{
+  "identity": {
+    "name": "DQ Sentinel",
+    "persona": "The Swiss Auditor",
+    "tone": "Precise, Clinical, Trustworthy, High-Contrast",
+    "theme_mode": "light"
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Chivo, sans-serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "google_fonts_import": "https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+    "usage_rules": {
+      "headings": "Use Chivo for all h1-h3. Weight: 900 for Hero, 700 for Section Headers. Tracking: -0.02em.",
+      "body": "Use Inter for all UI text. Weight: 400 regular, 500 for labels. Tracking: normal.",
+      "mono": "Use JetBrains Mono for all data values, regex patterns, and IDs. Text-xs or Text-sm."
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": "#0F172A",
+      "primary_foreground": "#F8FAFC",
+      "secondary": "#F1F5F9",
+      "secondary_foreground": "#0F172A",
+      "accent": "#2563EB",
+      "accent_foreground": "#FFFFFF",
+      "background": "#FFFFFF",
+      "surface": "#F8FAFC",
+      "border": "#E2E8F0",
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#EF4444",
+      "muted": "#64748B"
+    },
+    "css_variables": {
+      "--background": "0 0% 100%",
+      "--foreground": "222 47% 11%",
+      "--card": "0 0% 100%",
+      "--card-foreground": "222 47% 11%",
+      "--popover": "0 0% 100%",
+      "--popover-foreground": "222 47% 11%",
+      "--primary": "222 47% 11%",
+      "--primary-foreground": "210 40% 98%",
+      "--secondary": "210 40% 96.1%",
+      "--secondary-foreground": "222 47% 11%",
+      "--muted": "210 40% 96.1%",
+      "--muted-foreground": "215.4 16.3% 46.9%",
+      "--accent": "221 83% 53%",
+      "--accent-foreground": "210 40% 98%",
+      "--destructive": "0 84.2% 60.2%",
+      "--destructive-foreground": "210 40% 98%",
+      "--border": "214.3 31.8% 91.4%",
+      "--input": "214.3 31.8% 91.4%",
+      "--ring": "222 47% 11%",
+      "--radius": "0.5rem"
+    }
+  },
+  "layout": {
+    "grid_system": "Bento Grid (Mode B - High Density)",
+    "spacing": {
+      "container_padding": "p-6 md:p-12",
+      "gap": "gap-6",
+      "section_spacing": "py-12"
+    },
+    "structure": {
+      "dashboard": "Grid: 1col (mobile) -> 4col (desktop). Top row: Scorecards. Middle: Main Content. Bottom: History.",
+      "max_width": "max-w-7xl mx-auto"
+    }
+  },
+  "components": {
+    "buttons": {
+      "style": "Sharp corners or small radius (rounded-md). No pill shapes.",
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm",
+      "secondary": "bg-white border border-input hover:bg-accent hover:text-accent-foreground shadow-sm",
+      "ghost": "hover:bg-accent hover:text-accent-foreground"
+    },
+    "cards": {
+      "style": "Flat, 1px border (border-border), bg-card. No heavy shadows. Minimalist.",
+      "hover": "hover:border-accent/50 transition-colors duration-200"
+    },
+    "upload_zone": {
+      "style": "Dashed border-2 border-dashed border-slate-300 bg-slate-50/50 hover:bg-blue-50/50 hover:border-blue-400 transition-all duration-300 rounded-xl p-12 text-center cursor-pointer group",
+      "icon_animation": "group-hover:scale-110 group-hover:text-blue-600 transition-transform duration-300"
+    },
+    "tables": {
+      "style": "Dense. Text-sm. Sticky header. Row hover: bg-slate-50.",
+      "header": "bg-white border-b border-slate-200 font-semibold text-slate-900 uppercase tracking-wider text-xs"
+    },
+    "status_badges": {
+      "pass": "bg-emerald-100 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full text-xs font-medium",
+      "fail": "bg-red-100 text-red-700 border border-red-200 px-2 py-0.5 rounded-full text-xs font-medium",
+      "warning": "bg-amber-100 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full text-xs font-medium"
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Subtle noise overlay on the main background (opacity 0.02) to reduce digital flatness.",
+    "shadows": "shadow-sm for cards. shadow-md for dropdowns/modals. No large diffuse shadows.",
+    "glassmorphism": "Use only for sticky headers: bg-white/80 backdrop-blur-md border-b border-slate-200/50."
+  },
+  "motion": {
+    "library": "framer-motion",
+    "transitions": "type: 'spring', stiffness: 300, damping: 30",
+    "micro_interactions": {
+      "hover": "scale: 1.01 or y: -2",
+      "tap": "scale: 0.98"
+    },
+    "page_transition": "initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}"
+  },
+  "assets": {
+    "icons": "Lucide React (standard). Use stroke-width={1.5} for a refined look.",
+    "images": [
+      {
+        "category": "hero_texture",
+        "url": "https://images.unsplash.com/photo-1594844862885-f0a64d371deb?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "description": "Subtle blue concrete texture for upload zone background (use with low opacity)",
+        "usage": "Apply as background-image on the Upload Zone container with opacity-5 mix-blend-overlay"
+      }
+    ]
+  },
+  "accessibility": {
+    "contrast": "Ensure all text is Slate-600 or darker on white backgrounds.",
+    "focus_states": "ring-2 ring-offset-2 ring-blue-600",
+    "aria": "All interactive elements must have aria-labels if no text is present."
+  },
+  "universal_guidelines": [
+    "Do not use gradients for backgrounds. Keep it flat and clean.",
+    "Use 'data-testid' for all interactive elements.",
+    "Avoid 'Inter' for headings. Use 'Chivo'.",
+    "Spacing should be generous (p-8+) in containers, but dense (p-2) in data tables.",
+    "Use 'sonner' for all toast notifications."
+  ],
+  "instructions_to_main_agent": "1. Install 'framer-motion', 'clsx', 'tailwind-merge', 'sonner'. 2. Update 'index.css' with the provided CSS variables. 3. Create a 'Layout' component that enforces the max-width and padding. 4. Build the 'UploadZone' component with the drag-and-drop logic and the texture background. 5. Implement the 'DQRulesTable' with the dense style."
+}
