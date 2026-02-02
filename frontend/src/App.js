@@ -1,51 +1,80 @@
-import { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { Toaster } from "@/components/ui/sonner";
+import { Shield, History, FileText } from "lucide-react";
+import Dashboard from "@/pages/Dashboard";
+import RunHistory from "@/pages/RunHistory";
+import RunDetails from "@/pages/RunDetails";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
+const Header = () => {
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
+    <header className="header-sticky" data-testid="main-header">
+      <div className="container-main py-4 flex items-center justify-between">
+        <NavLink to="/" className="flex items-center gap-3" data-testid="logo-link">
+          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+            <Shield className="w-5 h-5 text-white" strokeWidth={1.5} />
+          </div>
+          <div>
+            <h1 className="text-xl font-black tracking-tight text-slate-900">DQ Sentinel</h1>
+            <p className="text-xs text-slate-500">Data Quality Monitor</p>
+          </div>
+        </NavLink>
+        
+        <nav className="flex items-center gap-6" data-testid="main-nav">
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            data-testid="nav-dashboard"
+            end
+          >
+            Dashboard
+          </NavLink>
+          <NavLink 
+            to="/history" 
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            data-testid="nav-history"
+          >
+            <span className="flex items-center gap-1.5">
+              <History className="w-4 h-4" strokeWidth={1.5} />
+              Run History
+            </span>
+          </NavLink>
+        </nav>
+      </div>
+    </header>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer className="border-t border-slate-200 mt-auto" data-testid="main-footer">
+      <div className="container-main py-6 flex items-center justify-between text-sm text-slate-500">
+        <p>© 2024 DQ Sentinel. Data Quality Made Simple.</p>
+        <div className="flex items-center gap-4">
+          <span className="flex items-center gap-1.5">
+            <FileText className="w-4 h-4" strokeWidth={1.5} />
+            10 DQ Rules
+          </span>
+        </div>
+      </div>
+    </footer>
   );
 };
 
 function App() {
   return (
-    <div className="App">
+    <div className="App flex flex-col min-h-screen">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <Header />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/history" element={<RunHistory />} />
+            <Route path="/runs/:runId" element={<RunDetails />} />
+          </Routes>
+        </main>
+        <Footer />
+        <Toaster position="top-right" richColors />
       </BrowserRouter>
     </div>
   );

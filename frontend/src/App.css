@@ -1,34 +1,109 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #0f0f10;
+/* App-specific styles */
+.App {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
 }
 
-.App-link {
-    color: #61dafb;
+/* Layout container */
+.container-main {
+    @apply max-w-7xl mx-auto px-6 md:px-12 py-8;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
+/* Bento grid layout */
+.bento-grid {
+    @apply grid gap-6;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    to {
-        transform: rotate(360deg);
+}
+
+@media (min-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
+}
+
+/* Score card sizes */
+.score-card {
+    @apply col-span-1;
+}
+
+.score-card-lg {
+    @apply col-span-1 md:col-span-2;
+}
+
+/* Full width sections */
+.full-width {
+    @apply col-span-1 md:col-span-2 lg:col-span-4;
+}
+
+/* Header styles */
+.header-sticky {
+    @apply sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50;
+}
+
+/* Navigation link */
+.nav-link {
+    @apply text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors;
+}
+
+.nav-link.active {
+    @apply text-blue-600;
+}
+
+/* Empty state */
+.empty-state {
+    @apply flex flex-col items-center justify-center py-16 text-center;
+}
+
+.empty-state-icon {
+    @apply w-16 h-16 text-slate-300 mb-4;
+}
+
+/* Loading spinner */
+.spinner {
+    @apply animate-spin rounded-full border-2 border-slate-200 border-t-blue-600;
+}
+
+/* Score value colors */
+.score-excellent {
+    @apply text-emerald-600;
+}
+
+.score-good {
+    @apply text-blue-600;
+}
+
+.score-warning {
+    @apply text-amber-600;
+}
+
+.score-critical {
+    @apply text-red-600;
+}
+
+/* Rule name mono style */
+.rule-name {
+    @apply font-mono text-xs bg-slate-100 px-2 py-1 rounded;
+}
+
+/* Sample rows expansion */
+.sample-rows {
+    @apply mt-2 p-3 bg-slate-50 rounded-lg text-xs font-mono overflow-x-auto;
+}
+
+/* Report download buttons */
+.download-btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md transition-colors;
+}
+
+.download-btn-json {
+    @apply bg-slate-100 text-slate-700 hover:bg-slate-200;
+}
+
+.download-btn-html {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
 }
