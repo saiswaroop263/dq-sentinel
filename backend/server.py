@@ -118,12 +118,26 @@ class DQRulesEngine:
     
     def _add_result(self, rule_name: str, status: str, metric: float, threshold: float, 
                    sample_rows: List[Dict], description: str):
+        # Clean sample rows - replace NaN/inf with None
+        cleaned_rows = []
+        for row in sample_rows[:5]:
+            cleaned_row = {}
+            for k, v in row.items():
+                if pd.isna(v) or (isinstance(v, float) and (np.isinf(v) or np.isnan(v))):
+                    cleaned_row[k] = None
+                else:
+                    cleaned_row[k] = v
+            cleaned_rows.append(cleaned_row)
+        
+        # Clean metric value
+        clean_metric = 0.0 if (pd.isna(metric) or np.isinf(metric)) else round(metric, 4)
+        
         self.results.append({
             "rule_name": rule_name,
             "status": status,
-            "metric": round(metric, 4),
+            "metric": clean_metric,
             "threshold": threshold,
-            "sample_rows": sample_rows[:5],  # Limit to 5 sample rows
+            "sample_rows": cleaned_rows,
             "description": description
         })
     
