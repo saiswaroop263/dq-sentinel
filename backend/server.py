@@ -26,6 +26,11 @@ client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
 app = FastAPI(title="DQ Sentinel API")
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 api_router = APIRouter(prefix="/api")
 
 # Configure logging
