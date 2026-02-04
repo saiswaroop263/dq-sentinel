@@ -6,6 +6,14 @@
 
 DQ Sentinel is a full-stack data quality monitoring app that validates CSV datasets, generates a DQ score + rule-level failures, and tracks run history so teams can catch bad data before it reaches dashboards or ML models.
 
+## Key Highlights
+- Built full-stack DQ monitoring app (React + FastAPI + MongoDB) with run history + report export
+- Implemented 10 automated DQ rules (nulls, duplicates, regex checks, anomalies, outliers)
+- Deployed frontend on Vercel + backend on Render with API docs via Swagger
+
+## Architecture
+React (UI) → FastAPI (DQ rules engine) → MongoDB (datasets + runs + results) → JSON/HTML report export
+
 ## Screenshots
 ![Dashboard](screenshots/dashboard.png)
 ![DQ Results](screenshots/dq-results.png)
