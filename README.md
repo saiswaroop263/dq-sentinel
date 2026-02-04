@@ -12,6 +12,11 @@ DQ Sentinel is a full-stack data quality monitoring app that validates CSV datas
 ![Run History](screenshots/run-history.png)
 ![Report](screenshots/report.png)
 
+## What this project shows
+- Built an end-to-end DQ system (upload → rules engine → persistence → dashboard)
+- Designed rule metrics + thresholds + sample-failure outputs for debugging
+- Implemented run history for auditability and trend tracking
+
 ## How it Works
 1. Upload a CSV (or run Demo Mode)
 2. Backend runs 10 DQ rules + generates a DQ report
@@ -50,12 +55,12 @@ Backend:
 - CORS_ORIGINS=*
 
 Frontend:
-- REACT_APP_BACKEND_URL=http://localhost:8001
+- REACT_APP_BACKEND_URL=http://localhost:8002
 
 ## Project Structure
 
 ```
-/app
+dq-sentinel/
 ├── backend/
 │   ├── server.py          # FastAPI application with DQ rules engine
 │   ├── requirements.txt   # Python dependencies
@@ -77,7 +82,7 @@ Frontend:
 ### Prerequisites
 
 - Python 3.11+
-- Node.js 18+
+- Node.js 18 or 20
 - MongoDB (local or Docker)
 
 ### Start MongoDB with Docker
@@ -111,9 +116,8 @@ uvicorn server:app --host 0.0.0.0 --port 8002 --reload
 
 ```bash
 cd frontend
-
-# Install dependencies
 npm install --legacy-peer-deps
+echo "REACT_APP_BACKEND_URL=http://localhost:8002" > .env
 npm start
 
 # Set environment variables
