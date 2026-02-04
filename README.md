@@ -1,8 +1,21 @@
 # DQ Sentinel
 
-A full-stack Data Quality monitoring tool that helps you validate CSV datasets against 10 comprehensive data quality rules.
+**Live Demo:** https://dq-sentinel.vercel.app
+**Backend API (Render):** https://dq-sentinel-backend.onrender.com/docs
+**GitHub Repo:** https://github.com/saiswaroop263/dq-sentinel
 
-![DQ Sentinel Dashboard](https://via.placeholder.com/800x400?text=DQ+Sentinel+Dashboard)
+DQ Sentinel is a full-stack data quality monitoring app that validates CSV datasets, generates a DQ score + rule-level failures, and tracks run history so teams can catch bad data before it reaches dashboards or ML models.
+
+![Dashboard](screenshots/dashboard.png)
+![DQ Results](screenshots/dq-results.png)
+![Run History](screenshots/run-history.png)
+![Report](screenshots/report.png)
+
+## How it Works
+1. Upload a CSV (or run Demo Mode)
+2. Backend runs 10 DQ rules + generates a DQ report
+3. Results are stored in MongoDB (run history)
+4. UI shows summary + per-rule failures + downloadable report
 
 ## Features
 
@@ -27,6 +40,16 @@ A full-stack Data Quality monitoring tool that helps you validate CSV datasets a
 - **Frontend**: React 19 + Tailwind CSS + Shadcn UI
 - **Backend**: FastAPI (Python 3.11+)
 - **Database**: MongoDB
+
+
+## Environment Variables
+Backend:
+- MONGO_URL=mongodb://localhost:27017
+- DB_NAME=dq_sentinel
+- CORS_ORIGINS=*
+
+Frontend:
+- REACT_APP_BACKEND_URL=http://localhost:8002
 
 ## Project Structure
 
@@ -190,14 +213,3 @@ Click the "Run Demo" button to generate a sample e-commerce dataset with intenti
 ## License
 
 MIT License
-
-## Screenshots
-
-### Dashboard
-![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+Screenshot)
-
-### Run History
-![Run History](https://via.placeholder.com/800x400?text=Run+History+Screenshot)
-
-### Run Details
-![Run Details](https://via.placeholder.com/800x400?text=Run+Details+Screenshot)
