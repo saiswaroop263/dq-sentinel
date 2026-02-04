@@ -6,6 +6,7 @@
 
 DQ Sentinel is a full-stack data quality monitoring app that validates CSV datasets, generates a DQ score + rule-level failures, and tracks run history so teams can catch bad data before it reaches dashboards or ML models.
 
+## Screenshots
 ![Dashboard](screenshots/dashboard.png)
 ![DQ Results](screenshots/dq-results.png)
 ![Run History](screenshots/run-history.png)
