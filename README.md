@@ -38,7 +38,7 @@ DQ Sentinel is a full-stack data quality monitoring app that validates CSV datas
 
 ## Tech Stack
 
-- **Frontend**: React 19 + Tailwind CSS + Shadcn UI
+- **Frontend**: React 18 + Tailwind CSS + Shadcn UI
 - **Backend**: FastAPI (Python 3.11+)
 - **Database**: MongoDB
 
@@ -50,7 +50,7 @@ Backend:
 - CORS_ORIGINS=*
 
 Frontend:
-- REACT_APP_BACKEND_URL=http://localhost:8002
+- REACT_APP_BACKEND_URL=http://localhost:8001
 
 ## Project Structure
 
@@ -114,6 +114,7 @@ cd frontend
 
 # Install dependencies
 npm install --legacy-peer-deps
+npm start
 
 # Set environment variables
 echo "REACT_APP_BACKEND_URL=http://localhost:8002" > .env
